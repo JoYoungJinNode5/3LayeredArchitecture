@@ -1,8 +1,8 @@
 import express from 'express';
 import { requireAccessToken } from '../middlewares/require-access-token.middleware.js';
 import { ResumeController } from '../controllers/resume.controller.js';
-import { createResumeValidator } from '../middlewares/create-resume-validator.middleware.js';
-import { updateResumeValidator } from '../middlewares/update-resume-validator.middleware.js';
+import { createResumeValidator } from '../middlewares/validators/create-resume-validator.middleware.js';
+import { updateResumeValidator } from '../middlewares/validators/update-resume-validator.middleware.js';
 
 const resumesRouter = express.Router();
 const resumeController = new ResumeController();
