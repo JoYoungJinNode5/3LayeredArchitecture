@@ -1,22 +1,11 @@
 import express from 'express';
 import { requireAccessToken } from '../middlewares/require-access-token.middleware.js';
-import { HTTP_STATUS } from '../constants/http-status.constant.js';
-import { MESSAGES } from '../constants/message.constant.js';
+import { UserController } from '../controllers/user.controller.js';
 
 const usersRouter = express.Router();
+const userController = new UserController();
 
-usersRouter.get('/me', requireAccessToken, (req, res, next) => {
-  try {
-    const data = req.user;
-
-    return res.status(HTTP_STATUS.OK).json({
-      status: HTTP_STATUS.OK,
-      message: MESSAGES.USERS.READ_ME.SUCCEED,
-      data,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
+//내정보 조회 api
+usersRouter.get('/me', requireAccessToken, userController.getProfile);
 
 export { usersRouter };
