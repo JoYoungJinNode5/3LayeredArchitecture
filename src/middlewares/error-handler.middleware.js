@@ -4,9 +4,9 @@ export const errorHandler = (err, req, res, next) => {
   console.error(err);
 
   // joi에서 발생한 에러 처리
-  if (err.name === 'ValidationError') {
-    return res.status(HTTP_STATUS.BAD_REQUEST).json({
-      status: HTTP_STATUS.BAD_REQUEST,
+  if (err.status) {
+    return res.status(err.status).json({
+      status: err.status,
       message: err.message,
     });
   }

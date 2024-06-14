@@ -3,8 +3,9 @@ import { MESSAGES } from '../constants/message.constant.js';
 import { ResumeService } from '../services/resume.service.js';
 
 export class ResumeController {
-  resumeService = new ResumeService();
+  resumeService = new ResumeService(); // resume 서비스의 클래스를 컨트롤러 클래스의 멤버 변수로 할당
 
+  //이력서 생성
   createResume = async (req, res, next) => {
     try {
       const { title, content } = req.body;
@@ -25,6 +26,7 @@ export class ResumeController {
     }
   };
 
+  //이력서 목록 조회
   getResumes = async (req, res, next) => {
     try {
       const authorId = req.user.id;
@@ -41,6 +43,7 @@ export class ResumeController {
     }
   };
 
+  //이력서 상세 조회
   getResume = async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -57,6 +60,7 @@ export class ResumeController {
     }
   };
 
+  //이력서 수정
   updateResume = async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -77,6 +81,7 @@ export class ResumeController {
     }
   };
 
+  //이력서 삭제
   deleteResume = async (req, res, next) => {
     try {
       const { id } = req.params;
